@@ -81,7 +81,7 @@ public class PlayerTable : DataTable
             playerFullSprites.Add(Resources.Load<Sprite>(
                 Path.Combine("PlayerFullSprite", playerInfo.code.ToString())));
             playerStandingSprites.Add(Resources.Load<Sprite>(
-                Path.Combine("PlayerStandingSprite", playerInfo.code.ToString()))); 
+                Path.Combine("PlayerStandingSprite", playerInfo.code.ToString())));
             playerSkillSprites.Add(Resources.Load<Sprite>(
                 Path.Combine("Skill Image", playerInfo.code.ToString())));
         }
@@ -93,16 +93,16 @@ public class PlayerTable : DataTable
             newTrain.id = int.Parse(item["ID"]);
             newTrain.type = item["Type"] switch
             {
-                "ÀÌµ¿¼Óµµ" => TrainingType.MoveSpeed,
-                "½Ã¾ß°Å¸®" => TrainingType.Sight,
-                "»çÁ¤°Å¸®" => TrainingType.Range,
-                "°¨Áö¹üÀ§" => TrainingType.DetectionRange,
-                "¸íÁß·ü" => TrainingType.Accuracy,
-                "¹ÝÀÀ¼Óµµ" => TrainingType.ReactionSpeed,
-                "°ø°Ý¼Óµµ" => TrainingType.AtkRate,
-                "Å©¸®Æ¼ÄÃ È®·ü" => TrainingType.Critical,
-                "°ø°Ý·Â" => TrainingType.Atk,
-                "ÃÖ´ë Ã¼·Â" => TrainingType.Hp,
+                "ï¿½Ìµï¿½ï¿½Óµï¿½" => TrainingType.MoveSpeed,
+                "ï¿½Ã¾ß°Å¸ï¿½" => TrainingType.Sight,
+                "ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½" => TrainingType.Range,
+                "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" => TrainingType.DetectionRange,
+                "ï¿½ï¿½ï¿½ß·ï¿½" => TrainingType.Accuracy,
+                "ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½" => TrainingType.ReactionSpeed,
+                "ï¿½ï¿½ï¿½Ý¼Óµï¿½" => TrainingType.AtkRate,
+                "Å©ï¿½ï¿½Æ¼ï¿½ï¿½ È®ï¿½ï¿½" => TrainingType.Critical,
+                "ï¿½ï¿½ï¿½Ý·ï¿½" => TrainingType.Atk,
+                "ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½" => TrainingType.Hp,
                 _ => TrainingType.Hp
             };
             newTrain.level = int.Parse(item["Level"]);
@@ -132,7 +132,7 @@ public class PlayerTable : DataTable
         }
         for (int i = 0; i < 4; i++)
         {
-            playerTypeSprites.Add(Resources.Load<Sprite>(Path.Combine("PlayerType", (i+1).ToString())));
+            playerTypeSprites.Add(Resources.Load<Sprite>(Path.Combine("PlayerType", (i + 1).ToString())));
         }
 
         List<Dictionary<string, string>> skillTable = CSVReader.Read(Path.Combine("CSV", "skilltable"));
@@ -146,7 +146,7 @@ public class PlayerTable : DataTable
             this.skillTable.Add(newSkill);
         }
     }
-    
+
     public int PlayerIndexSearch(int code)
     {
         return playerDatabase.FindIndex(player => player.code == code);
@@ -154,7 +154,7 @@ public class PlayerTable : DataTable
 
     public PlayerInfo GetPlayerInfo(int code)
     {
-        
+
         return playerDatabase.Find(player => player.code == code);
     }
 
@@ -171,7 +171,7 @@ public class PlayerTable : DataTable
         return playerStandingSprites[PlayerIndexSearch(code)];
     }
 
-    public float CalculateCurrStats(GrowableStats stats,int level)
+    public float CalculateCurrStats(GrowableStats stats, int level)
     {
         return stats.min + (stats.gap * level);
     }
